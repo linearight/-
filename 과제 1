@@ -1,0 +1,52 @@
+-Code-
+#1-1)
+data = trees #데이터셋 불러오기
+summary(data$Volume) #Volume 의 평균과 사분위수
+var(data$Volume) #분산
+hist(data$Volume) #히스토그램램
+boxplot((data$Volume)) #박스플롯
+#1-2)
+plot(data$Volume,data$Girth) #산점도
+#산점도로부터 선형적 비례관계가 있음을 알 수 있다.
+#1-3)
+cor(data$Volume,data$Girth) #상관계수
+#상관계수 0.9671194로부터 선형적 비례관계를 확인할 수 있다.
+#2-1)
+y = c()
+z = c()
+for(num in 1:300) {
+  m = mean(sample(data$Volume,150,replace =TRUE)) #150개 표본 복원추출, 표본평균을 m에 저장
+  z = c(z, m) #300개 표본평균을 z에 저장
+  if (m >= 30) {y = c(y,1)} else {y = c(y,0)}} #표본평균이 30이상일때 1, 미만일때 0을 z에 저장장
+#2-2)
+sum(y)/300 #표본평균이 30이상일 비율
+hist(z) #표본평균의 히스토그램
+
+-Console-
+#1-1)
+> data = trees #데이터셋 불러오기
+> summary(data$Volume) #Volume 의 평균과 사분위수
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  10.20   19.40   24.20   30.17   37.30   77.00 
+> var(data$Volume) #분산
+[1] 270.2028
+> hist(data$Volume) #히스토그램램
+> boxplot((data$Volume)) #박스플롯
+> #1-2)
+> plot(data$Volume,data$Girth) #산점도
+> #산점도로부터 선형적 비례관계가 있음을 알 수 있다.
+> #1-3)
+> cor(data$Volume,data$Girth) #상관계수
+[1] 0.9671194
+> #상관계수 0.9671194로부터 선형적 비례관계를 확인할 수 있다.
+> #2-1)
+> y = c()
+> z = c()
+> for(num in 1:300) {
++   m = mean(sample(data$Volume,150,replace =TRUE)) #150개 표본 복원추출, 표본평균을 m에 저장
++   z = c(z, m) #300개 표본평균을 z에 저장
++   if (m >= 30) {y = c(y,1)} else {y = c(y,0)}} #표본평균이 30이상일때 1, 미만일때 0을 z에 저장장
+> #2-2)
+> sum(y)/300 #표본평균이 30이상일 비율
+[1] 0.5633333
+> hist(z) #표본평균의 히스토그램
